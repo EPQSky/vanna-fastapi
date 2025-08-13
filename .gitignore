@@ -1,0 +1,18 @@
+# project settings
+.idea
+.vscode
+.cursor
+
+# python project
+.DS_Store
+.conda
+conda
+.venv
+venv
+__pycache__
+chroma_db
+
+# log
+logs
+
+# other

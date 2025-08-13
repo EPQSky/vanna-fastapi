@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  vanna-fastapi:
+    image: vanna-fastapi:0.0.2
+    container_name: vanna-fastapi
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 12G
+        reservations:
+          memory: 4G
+    environment:
+      - API_KEY=xxx
+      - BASE_URL=https://api.siliconflow.cn/v1
+      - MODEL=Qwen/Qwen3-32B
+      - TEMPERATURE=0.7
+      - TOP_P=0.8
+      - EMBED_API_KEY=xxx
+      - EMBED_API_BASE=https://api.siliconflow.cn/v1
+      - EMBED_MODEL_NAME=BAAI/bge-m3
+      - DB_TYPE=postgres
+      - DB_HOST=xxx
+      - DB_NAME=xxx
+      - DB_USER=xxx
+      - DB_PASSWORD=xxx
+      - DB_PORT=xxx
+      - PYTHONUNBUFFERED=1
+      - MALLOC_TRIM_THRESHOLD_=10000
+    volumes:
+      - .:/app
+    ports:
+      - 1201:5000
+    command: [ "gunicorn", "main:app", "-c", "gunicorn_config.py" ]
