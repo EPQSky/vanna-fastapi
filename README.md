@@ -1,4 +1,4 @@
-# Vanna Flask - 智能文本转SQL服务
+# Vanna FastAPI - 智能文本转SQL服务
 
 一个基于 Vanna AI 的智能文本转SQL查询服务，支持自然语言查询数据库，提供FastAPI接口和向量检索增强功能。
 
@@ -185,7 +185,7 @@ POST /api/v0/remove_training_data?id=abc-123-def-456
 
 1. **构建镜像**：
 ```bash
-docker build -t vanna-flask:latest .
+docker build -t vanna-fastapi:latest .
 ```
 
 2. **创建环境配置文件** `.env`：
@@ -214,11 +214,11 @@ EMBED_MODEL_NAME=BAAI/bge-m3
 3. **运行容器**：
 ```bash
 docker run -d \
-  --name vanna-flask \
+  --name vanna-fastapi \
   --env-file .env \
   -p 8000:5000 \
   -v $(pwd)/chroma_db:/app/chroma_db \
-  vanna-flask:latest
+  vanna-fastapi:latest
 ```
 
 ### Docker Compose部署
